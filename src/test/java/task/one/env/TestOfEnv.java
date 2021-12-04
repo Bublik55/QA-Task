@@ -13,7 +13,6 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
 public class TestOfEnv extends TestBase{
 
-
     @Test
     public void myFirstTest() {
         String assertString = "webDriver - Поиск в Google";
