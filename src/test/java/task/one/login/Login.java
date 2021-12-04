@@ -20,7 +20,7 @@ public class Login extends TestBase {
     public void myFirstTest() {
         driver.navigate().to("http://localhost/litecart/admin/");
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        wait.until((WebDriver d) -> d.find:qqElement(By.name("username"))).sendKeys(login);
+        wait.until((WebDriver d) -> d.findElement(By.name("username"))).sendKeys(login);
         wait.until((WebDriver d) -> d.findElement(By.name("password"))).sendKeys(passwd);
         wait.until((WebDriver d) -> d.findElement(By.name("login"))).click();
         wait.until(urlMatches(assertUrl));
