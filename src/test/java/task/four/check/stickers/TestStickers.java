@@ -27,7 +27,7 @@ public class TestStickers extends TestBase {
         assertEquals(driver.getCurrentUrl(),assertUrl);
     }
     @Test
-    public void everyItem() {
+    public void everyItemHasOneSticker() {
         List<WebElement> items = getItems();
         int size = items.size();
         for (int i = 0; i < size; i++) {
@@ -37,8 +37,8 @@ public class TestStickers extends TestBase {
             tag.addAll(curItem.findElements(By.cssSelector(".sticker.new")));
             tag.addAll(curItem.findElements(By.cssSelector(".sticker.sale")));
             assertFalse(tag.isEmpty());
+            assertTrue(tag.size() == 1);
         }
-        driver.quit();
     }
 
     private List<WebElement> getItems() {
