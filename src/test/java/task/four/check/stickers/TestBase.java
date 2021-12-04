@@ -1,4 +1,4 @@
-package task.four.open.everysection;
+package task.four.check.stickers;
 
 import org.junit.After;
 import org.junit.Before;
