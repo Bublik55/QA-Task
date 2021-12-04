@@ -5,7 +5,6 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import task.one.login.TestBase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,5 +42,6 @@ public class TestSections extends TestBase {
             header = driver.findElement(By.tagName("h1"));
             assertNotNull(header);
         }
+        driver.quit();
     }
 }

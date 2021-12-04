@@ -7,7 +7,6 @@ import org.openqa.selenium.WebDriver;
 import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.assertEquals;
-import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 import static org.openqa.selenium.support.ui.ExpectedConditions.urlMatches;
 
 public class Login extends TestBase {
@@ -25,5 +24,6 @@ public class Login extends TestBase {
         wait.until((WebDriver d) -> d.findElement(By.name("login"))).click();
         wait.until(urlMatches(assertUrl));
         assertEquals(driver.getCurrentUrl(),assertUrl);
+        driver.quit();
     }
 }

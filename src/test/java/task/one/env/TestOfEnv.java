@@ -11,7 +11,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
-public class TestOfEnv extends TestBase{
+public class TestOfEnv extends TestBase {
 
     @Test
     public void myFirstTest() {
@@ -22,5 +22,6 @@ public class TestOfEnv extends TestBase{
         wait.until((WebDriver d) -> d.findElement(By.name("btnK"))).click();
         wait.until(titleIs(assertString));
         assertEquals(driver.getTitle(),assertString);
+        driver.quit();
     }
 }
