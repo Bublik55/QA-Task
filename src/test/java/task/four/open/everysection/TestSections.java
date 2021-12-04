@@ -32,16 +32,32 @@ public class TestSections extends TestBase {
     }
     @Test
     public void everyItem() {
-        List<WebElement> elements = new ArrayList<>();
-        int Size = driver.findElements(By.id("app-")).size();
-        for (int i = 0; i < Size; i++) {
-            elements = driver.findElements(By.id("app-"));
-            WebElement curElem = elements.get(i);
-            WebElement header = null;
-            curElem.click();
-            header = driver.findElement(By.tagName("h1"));
-            assertNotNull(header);
+        List<WebElement> sections = new ArrayList<>();
+        int sectionSize = driver.findElements(By.id("app-")).size();
+        for (int i = 0; i < sectionSize; i++) {
+            sections = getSections();
+            WebElement curSection = sections.get(i);
+            curSection.click();
+            curSection = getSections().get(i);
+            List<WebElement> subSections = getSubSections(curSection);
+            int subSectionSize = subSections.size();
+            for(int j = 1; j < subSectionSize; j++) {
+                sections = getSections();
+                WebElement curSubSection = getSubSections(sections.get(i)).get(j);
+                curSubSection.click();
+                WebElement header = null;
+                header = driver.findElement(By.tagName("h1"));
+                assertNotNull(header);
+            }
         }
         driver.quit();
     }
+
+    private List<WebElement> getSections() {
+        return driver.findElements(By.id("app-"));
+    }
+    private List<WebElement> getSubSections( WebElement curSection) {
+        return curSection.findElements(By.className("name"));
+    }
+
 }
