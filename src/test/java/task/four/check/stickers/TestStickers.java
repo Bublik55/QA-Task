@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 import static org.junit.Assert.*;
 import static org.openqa.selenium.support.ui.ExpectedConditions.urlMatches;
 
-public class TestSections extends TestBase {
+public class TestStickers extends TestBase {
 
 //    public String login = "admin";
 //    public String passwd = "admin";
