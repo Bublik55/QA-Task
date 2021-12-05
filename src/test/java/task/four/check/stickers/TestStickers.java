@@ -30,14 +30,15 @@ public class TestStickers extends TestBase {
     public void everyItemHasOneSticker() {
         List<WebElement> items = getItems();
         int size = items.size();
+        assertTrue(size > 0);
         for (int i = 0; i < size; i++) {
             WebElement curItem = items.get(i);
             List<WebElement> tag = new ArrayList<>();
             driver.manage().timeouts().implicitlyWait(50, TimeUnit.MILLISECONDS);
-            assertTrue(1 == curItem.findElements(By.cssSelector(".sticker")).size());
+            assertTrue(1 == curItem.findElements(By.cssSelector("[class ^='sticker']")).size());
         }
     }
     private List<WebElement> getItems() {
-        return wait.until((WebDriver d) -> d.findElements(By.cssSelector("product.column")));
+        return wait.until((WebDriver d) -> d.findElements(By.cssSelector("[class *='product column']")));
     }
 }
