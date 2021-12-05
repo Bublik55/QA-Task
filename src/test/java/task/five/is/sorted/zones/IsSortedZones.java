@@ -24,7 +24,7 @@ public class IsSortedZones extends TestBase {
     @Before
     public void base() {
         driver.navigate().to("http://localhost/litecart/admin/");
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         wait.until((WebDriver d) -> d.findElement(By.name("username"))).sendKeys(login);
         wait.until((WebDriver d) -> d.findElement(By.name("password"))).sendKeys(passwd);
         wait.until((WebDriver d) -> d.findElement(By.name("login"))).click();
@@ -53,14 +53,10 @@ public class IsSortedZones extends TestBase {
 
         List<String> zoneStringList = new ArrayList<>();
         zones.forEach(webElement -> {
-            List<WebElement> we = webElement.findElements(By.cssSelector("select")).get(1).findElements(By.cssSelector("option"));
-            we.forEach(e -> {
-                if(e.isSelected()) {
-                    String name = e.getText();
-                    zoneStringList.add(name);
-                }
-            });
-
+            WebElement we = webElement.findElements(By.cssSelector("select")).get(1).findElement(By.cssSelector("[selected ='selected']"));
+            String name = we.getText();
+            zoneStringList.add(name);
+            assertTrue(zoneStringList.size()>0);
         });
         ret = Ordering.natural().isOrdered(zoneStringList);
         wait.until((WebDriver d) -> d.findElement(By.linkText("Geo Zones"))).click();

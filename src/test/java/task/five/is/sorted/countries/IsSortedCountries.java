@@ -35,26 +35,18 @@ public class IsSortedCountries extends TestBase {
         wait.until((WebDriver d) -> d.findElement(By.linkText("Countries"))).click();
         List<WebElement> countries = getCountries();
         List<String> countryStringList = new ArrayList<>();
+        List<String> cwzones = new ArrayList<>();
         countries.forEach(webElement -> {
-            String name = webElement.findElements(By.cssSelector("td")).get(4).getText();
+            List<WebElement> we = webElement.findElements(By.cssSelector("td"));
+            String name = we.get(4).getText();
+            if (Integer.parseInt(we.get(5).getText()) > 0)
+                cwzones.add(name);
+
             countryStringList.add(name);
         });
+        assertTrue(countryStringList.size() > 0);
         assertTrue(Ordering.natural().isOrdered(countryStringList));
-        isSortedZones();
-    }
-
-    public void isSortedZones() {
-        List<WebElement> countries = getCountries();
-        List<String> countryWithZonesList = new ArrayList<>();
-        countries.forEach(webElement -> {
-            String name = webElement.findElements(By.cssSelector("td")).get(4).getText();
-            List<WebElement> curRow = webElement.findElements(By.cssSelector("td"));
-            int zones = Integer.parseInt(curRow.get(5).getText());
-            if (zones > 0) countryWithZonesList.add(name);
-        });
-        for(int i = 0; i < countryWithZonesList.size();i++) {
-            assertTrue(isSortedZones(countryWithZonesList.get(i)));
-        }
+        cwzones.forEach(e -> isSortedZones(e));
     }
 
     public boolean isSortedZones(String Country) {
