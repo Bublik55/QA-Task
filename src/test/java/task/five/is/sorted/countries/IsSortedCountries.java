@@ -23,7 +23,7 @@ public class IsSortedCountries extends TestBase {
     @Before
     public void base() {
         driver.navigate().to("http://localhost/litecart/admin/");
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         wait.until((WebDriver d) -> d.findElement(By.name("username"))).sendKeys(login);
         wait.until((WebDriver d) -> d.findElement(By.name("password"))).sendKeys(passwd);
         wait.until((WebDriver d) -> d.findElement(By.name("login"))).click();
@@ -60,6 +60,7 @@ public class IsSortedCountries extends TestBase {
             String name = webElement.findElements(By.cssSelector("td")).get(2).getText();
             zoneStringList.add(name);
         });
+        assertTrue(zoneStringList.size() > 0);
         ret = Ordering.natural().isOrdered(zoneStringList);
         wait.until((WebDriver d) -> d.findElement(By.linkText("Countries"))).click();
         return ret;
