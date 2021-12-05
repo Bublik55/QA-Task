@@ -48,15 +48,15 @@ public class IsSorted extends TestBase {
 
     public void isSortedZones() {
         List<WebElement> countries = getCountries();
-        List<String> countryStringList = new ArrayList<>();
+        List<String> countryWithZonesList = new ArrayList<>();
         countries.forEach(webElement -> {
             String name = webElement.findElements(By.cssSelector("td")).get(4).getText();
             List<WebElement> curRow = webElement.findElements(By.cssSelector("td"));
             int zones = Integer.parseInt(curRow.get(5).getText());
-            if (zones > 0) countryStringList.add(name);
+            if (zones > 0) countryWithZonesList.add(name);
         });
-        for(int i = 0; i < countryStringList.size();i++) {
-            assertTrue(isSortedZones(countryStringList.get(i)));
+        for(int i = 0; i < countryWithZonesList.size();i++) {
+            assertTrue(isSortedZones(countryWithZonesList.get(i)));
         }
     }
 

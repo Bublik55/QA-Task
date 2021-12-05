@@ -20,7 +20,7 @@ public class TestStickers extends TestBase {
     public String assertUrl = "http://localhost/litecart/en/";
 
     @Before
-    public void myFirstTest() {
+    public void before() {
         driver.navigate().to("http://localhost/litecart");
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         wait.until(urlMatches(assertUrl));
@@ -34,15 +34,12 @@ public class TestStickers extends TestBase {
             WebElement curItem = items.get(i);
             List<WebElement> tag = new ArrayList<>();
             driver.manage().timeouts().implicitlyWait(50, TimeUnit.MILLISECONDS);
-            tag.addAll(curItem.findElements(By.cssSelector(".sticker.new")));
-            tag.addAll(curItem.findElements(By.cssSelector(".sticker.sale")));
-            assertFalse(tag.isEmpty());
-            assertTrue(tag.size() == 1);
+            assertTrue(1 == curItem.findElements(By.cssSelector(".sticker")).size());
         }
     }
 
     private List<WebElement> getItems() {
-        return wait.until((WebDriver d) -> d.findElements(By.className("image-wrapper")));
+        return wait.until((WebDriver d) -> d.findElements(By.cssSelector("product.column")));
     }
 
 
