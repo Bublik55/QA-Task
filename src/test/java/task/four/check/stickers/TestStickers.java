@@ -37,10 +37,7 @@ public class TestStickers extends TestBase {
             assertTrue(1 == curItem.findElements(By.cssSelector(".sticker")).size());
         }
     }
-
     private List<WebElement> getItems() {
         return wait.until((WebDriver d) -> d.findElements(By.cssSelector("product.column")));
     }
-
-
 }

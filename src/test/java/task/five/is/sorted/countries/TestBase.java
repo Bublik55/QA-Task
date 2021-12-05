@@ -1,4 +1,4 @@
-package task.five.is.sorted;
+package task.five.is.sorted.countries;
 
 import org.junit.After;
 import org.junit.Before;

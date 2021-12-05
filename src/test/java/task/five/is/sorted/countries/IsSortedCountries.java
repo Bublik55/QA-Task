@@ -1,4 +1,4 @@
-package task.five.is.sorted;
+package task.five.is.sorted.countries;
 
 import com.google.common.collect.Ordering;
 import org.junit.Before;
@@ -8,15 +8,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-import java.util.stream.Collectors;
 
 import static org.junit.Assert.*;
 import static org.openqa.selenium.support.ui.ExpectedConditions.urlMatches;
 
-public class IsSorted extends TestBase {
+public class IsSortedCountries extends TestBase {
 
     public String login = "admin";
     public String passwd = "admin";
@@ -42,7 +40,6 @@ public class IsSorted extends TestBase {
             countryStringList.add(name);
         });
         assertTrue(Ordering.natural().isOrdered(countryStringList));
-
         isSortedZones();
     }
 
