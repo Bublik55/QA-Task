@@ -14,7 +14,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.openqa.selenium.support.ui.ExpectedConditions.urlMatches;
 
-public class TestStickers extends TestBase {
+public class IsValidInformation extends TestBase {
 
 
     public String assertUrl = "http://localhost/litecart/en/";
