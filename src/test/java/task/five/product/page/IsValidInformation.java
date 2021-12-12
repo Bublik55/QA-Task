@@ -50,9 +50,6 @@ public class IsValidInformation extends TestBase {
     public void IsEqualsInfo() {
         List<WebElement> items = getItems();
         int size = items.size();
-        //
-        Set<Point> loc = new HashSet<>();
-        //
         assertTrue(size > 0);
         for (int i = 0; i < size; i++) {
             WebElement curItem = items.get(i);
