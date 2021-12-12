@@ -60,7 +60,9 @@ public class IsValidInformation extends TestBase {
             curItem.click();
             curItem = driver.findElement(By.id("box-product"));
             List<String> mainPageProduct = GetOptionsFromProductPageWithPriceValidation(curItem);
+
             assertTrue(storePageProduct.equals(mainPageProduct));
+
             driver.navigate().to("http://localhost/litecart");
             wait.until(urlMatches(assertUrl));
             items = getItems();
@@ -97,7 +99,7 @@ public class IsValidInformation extends TestBase {
         return options;
     }
 
-
+    //функция которая
     private Boolean IsValidPrice(WebElement we) {
         WebElement regPrice = we.findElement(By.className("regular-price"));
         WebElement salePrice = we.findElement(By.className("campaign-price"));
